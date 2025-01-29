@@ -1,5 +1,16 @@
-export default function Dashboard() {
+import { getAllTodos } from '@/api';
+import TodoList from '../../components/TodoList';
+
+
+export default async function Dashboard() {
+  const tasks = await getAllTodos();
+  console.log(tasks);
+
   return (
-    <div>hey</div>
+    <div>
+      <div>Dashboard Page</div>
+      <TodoList tasks={tasks} />
+    </div>
+
   )
 }
