@@ -1,12 +1,11 @@
 import { ITask } from "@/types/tasks";
-// import Task from "./Task";
-import Button from './Button';
+import Button from './AddTaskButton';
 
 interface TodoListProps {
   tasks: ITask[];
 }
 
-export default function TodoList({ tasks }) {
+const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
   return (
     <div className='mt-24'>
       <Button />
@@ -14,7 +13,7 @@ export default function TodoList({ tasks }) {
         <table className="table w-full">
           <thead>
             <tr className="text-left">
-              <th className="w-[10%] p-2">ID</th>
+              {/* <th className="w-[10%] p-2">ID</th> */}
               <th className="w-[70%] p-2">Title</th>
               <th className="w-[20%] p-2">Completed</th>
             </tr>
@@ -22,7 +21,7 @@ export default function TodoList({ tasks }) {
           <tbody>
             {tasks.map((task) => (
               <tr key={task.id} className="text-left">
-                <td className="w-[10%] p-2">{task.id}</td>
+                {/* <td className="w-[10%] p-2">{task.id}</td> */}
                 <td className="w-[70%] p-2">{task.title}</td>
                 <td className="w-[20%] p-2">{task.completed ? "Yes" : "No"}</td>
               </tr>
@@ -33,3 +32,5 @@ export default function TodoList({ tasks }) {
     </div>
   );
 }
+
+export default TodoList;
