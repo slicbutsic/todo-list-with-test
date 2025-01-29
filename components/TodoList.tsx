@@ -1,8 +1,8 @@
 'use client';
 import { ITask } from "@/types/tasks";
 import Button from './AddTaskButton';
-import { Trash2 } from 'lucide-react';
 import EditTaskButton from "./EditTaskButton";
+import DeleteTaskButton from "./DeleteTaskButton";
 
 interface TodoListProps {
   tasks: ITask[];
@@ -26,7 +26,7 @@ const TodoList: React.FC<TodoListProps> = ({ tasks }) => {
                 <td className="w-[70%] p-2">{task.title}</td>
                 <td className="flex gap-5">
                   <EditTaskButton task={task} />
-                  <Trash2 size={18} />
+                  <DeleteTaskButton task={task} />
                 </td>
               </tr>
             ))}
