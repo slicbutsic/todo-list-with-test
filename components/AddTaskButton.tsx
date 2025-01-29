@@ -18,7 +18,6 @@ export default function AddTaskButton() {
     await addTodo({
       id: uuidv4(),
       title: newTaskValue,
-      completed: false
     });
     setNewTaskValue('');
     setModalOpen(false);

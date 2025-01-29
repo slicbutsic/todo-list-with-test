@@ -9,7 +9,6 @@ const Task: React.FC<TaskProps> = ({ task }) => {
     <tr key={task.id}>
       <td>{task.id}</td>
       <td>{task.title}</td>
-      <td>{task.completed ? "Yes" : "No"}</td>
     </tr>
   )
 }
