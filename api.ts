@@ -1,8 +1,10 @@
 import { ITask } from './types/tasks';
+// import { useUser } from "@clerk/nextjs";
+
 const baseUrl = 'http://localhost:3001';
 
-export const getAllTodos = async (): Promise<ITask[]> => {
-  const res = await fetch(`${baseUrl}/tasks`, { cache: 'no-store'});
+export const getAllTodos = async (userId: string): Promise<ITask[]> => {
+  const res = await fetch(`${baseUrl}/tasks?userId=${userId}`, { cache: 'no-store'});
   const todos = await res.json();
   return todos;
 }

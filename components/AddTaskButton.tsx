@@ -6,18 +6,24 @@ import { useState } from 'react';
 import { addTodo } from '@/api';
 import { useRouter } from 'next/navigation';
 import { FormEventHandler } from 'react';
+import { useUser } from "@clerk/nextjs";
+
 
 
 export default function AddTaskButton() {
-  const router = useRouter(); //
+  const { user } = useUser()
+  const userId = user?.id;
+  const router = useRouter();
   const [modalOpen, setModalOpen] = useState(false);
   const [newTaskValue, setNewTaskValue] = useState<string>('');
 
   const handleSubmitNewTodo: FormEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
+    if (!userId) return;
     await addTodo({
       id: uuidv4(),
       title: newTaskValue,
+      userId: userId
     });
     setNewTaskValue('');
     setModalOpen(false);
