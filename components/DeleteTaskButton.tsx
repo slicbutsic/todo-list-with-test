@@ -4,7 +4,12 @@ import { useState } from 'react';
 import Modal from './Modal';
 import { useRouter } from 'next/navigation';
 
-const DeleteTaskButton = ({ task }) => {
+interface Task {
+  id: string;
+  title: string; 
+}
+
+const DeleteTaskButton = ({ task }: { task: Task }) => {
   const router = useRouter();
   const [openModalDelete, setOpenModalDelete] = useState(false);
 
