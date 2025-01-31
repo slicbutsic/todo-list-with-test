@@ -33,7 +33,7 @@ export default function RootLayout({
 }>) {
 
   return (
-    <ClerkProvider> 
+    <ClerkProvider>
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable} antialiased mx-auto max-w-screen-lg`} >
           <div className="absolute top-5 right-24">
@@ -45,7 +45,7 @@ export default function RootLayout({
               </SignInButton>
             </SignedOut>
             <SignedIn>
-              <UserButton />
+              <UserButton showName />
             </SignedIn>
           </div>
           {children}

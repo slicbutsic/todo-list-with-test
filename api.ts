@@ -1,6 +1,4 @@
 import { ITask } from './types/tasks';
-// import { useUser } from "@clerk/nextjs";
-
 const baseUrl = 'http://localhost:3001';
 
 export const getAllTodos = async (userId: string): Promise<ITask[]> => {
