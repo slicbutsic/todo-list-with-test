@@ -29,16 +29,22 @@ export default function AddTaskButton() {
 
   return (
     <div className="flex justify-center items-center">
-      <button onClick={() => setModalOpen(true)} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-40 rounded-md flex items-center justify-center">
-        Add a new task <Plus size={20} className="ml-2"/>
+      <button onClick={() => setModalOpen(true)} className="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-8 rounded-xl shadow-lg transform transition duration-300 hover:scale-105 flex items-center justify-center">
+        Add a new task <Plus size={20} className="ml-2" />
       </button>
 
       <Modal modalOpen={modalOpen} setModalOpen={setModalOpen}>
         <form onSubmit={handleSubmitNewTodo}>
-          <h3 className='font-bold text-lg'>Add new task</h3>
-          <div className='modal-action'>
-            <input value={newTaskValue} onChange={e => setNewTaskValue(e.target.value)} type="text" placeholder="Type here" className="input input-bordered w-full" />
-            <button type='submit' className='btn'>Submit</button>
+          <h3 className="font-bold text-xl text-gray-800 mb-4">Add new task</h3>
+          <div className="modal-action">
+            <input
+              value={newTaskValue}
+              onChange={e => setNewTaskValue(e.target.value)}
+              type="text"
+              placeholder="Type here"
+              className="input input-bordered w-full py-3 px-4 text-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600"
+            />
+            <button type='submit' className="btn bg-indigo-600 text-white hover:bg-indigo-700 rounded-xl shadow-lg transform transition duration-300 hover:scale-105">Submit</button>
           </div>
         </form>
       </Modal>

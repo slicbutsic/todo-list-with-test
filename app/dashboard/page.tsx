@@ -8,7 +8,6 @@ export default async function Dashboard() {
 
   return (
     <div>
-      <div>Dashboard Page</div>
       <TodoList tasks={tasks} />
     </div>
 
