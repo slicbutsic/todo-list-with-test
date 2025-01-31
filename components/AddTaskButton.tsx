@@ -4,16 +4,13 @@ import { Plus } from 'lucide-react';
 import Modal from './Modal';
 import { useState } from 'react';
 import { addTodo } from '@/api';
-import { useRouter } from 'next/navigation';
 import { FormEventHandler } from 'react';
 import { useUser } from "@clerk/nextjs";
-
-
 
 export default function AddTaskButton() {
   const { user } = useUser()
   const userId = user?.id;
-  const router = useRouter();
+
   const [modalOpen, setModalOpen] = useState(false);
   const [newTaskValue, setNewTaskValue] = useState<string>('');
 
@@ -27,7 +24,7 @@ export default function AddTaskButton() {
     });
     setNewTaskValue('');
     setModalOpen(false);
-    router.refresh();
+    location.reload();
   }
 
   return (

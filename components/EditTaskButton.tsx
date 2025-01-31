@@ -3,14 +3,12 @@ import { editTodo } from '@/api';
 import { ITask } from "@/types/tasks";
 import Modal from './Modal';
 import { FormEventHandler, useState } from 'react';
-import { useRouter } from 'next/navigation';
 
 interface TaskProps {
   task: ITask;
 }
 
 const EditTaskButton: React.FC<TaskProps> = ({ task }) => {
-  const router = useRouter();
   const [openModalEdit, setOpenModalEdit] = useState<boolean>(false);
   const [taskEdit, setTaskEdit] = useState<string>(task.title);
 
@@ -19,10 +17,11 @@ const EditTaskButton: React.FC<TaskProps> = ({ task }) => {
     await editTodo({
       id: task.id,
       title: taskEdit,
+      userId: task.userId
     });
     setTaskEdit('');
     setOpenModalEdit(false);
-    router.refresh();
+    location.reload();
   }
 
   return (

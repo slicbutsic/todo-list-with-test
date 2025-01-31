@@ -2,21 +2,19 @@ import { Trash2 } from 'lucide-react';
 import { deleteTodo } from '@/api'
 import { useState } from 'react';
 import Modal from './Modal';
-import { useRouter } from 'next/navigation';
 
 interface Task {
   id: string;
-  title: string; 
+  title: string;
 }
 
 const DeleteTaskButton = ({ task }: { task: Task }) => {
-  const router = useRouter();
   const [openModalDelete, setOpenModalDelete] = useState(false);
 
   const handleDeleteTask = async (id: string) => {
     await deleteTodo(id)
     setOpenModalDelete(false);
-    router.refresh();
+    location.reload();
   }
 
   return (
