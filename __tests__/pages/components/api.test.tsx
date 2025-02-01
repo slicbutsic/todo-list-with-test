@@ -1,4 +1,4 @@
-import { addTodo, getAllTodos, editTodo } from '@/api';
+import { addTodo, getAllTodos, editTodo, deleteTodo } from '@/api';
 import { ITask } from '@/types/tasks';
 
 // Checking getAllTodos function
@@ -83,3 +83,20 @@ describe('editTodo', () => {
     await expect(editTodo(blankTodo)).rejects.toThrow('Todo title cannot be blank');
   });
 });
+
+// Checking DeleteTodo function
+
+describe('deleteTodo', () => {
+  beforeEach(() => {
+    global.fetch = jest.fn(() =>
+      Promise.resolve()
+    ) as jest.Mock;
+  });
+
+  it('should delete a todo', async () => {
+    await deleteTodo('1');
+    expect(fetch).toHaveBeenCalledWith('http://localhost:3001/tasks/1', {
+      method: 'DELETE'
+    });
+  });
+})
