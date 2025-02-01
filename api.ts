@@ -8,6 +8,9 @@ export const getAllTodos = async (userId: string): Promise<ITask[]> => {
 }
 
 export const addTodo = async (todo: ITask): Promise<ITask> => {
+  if (!todo.title.trim()) {
+    throw new Error('Todo title cannot be blank');
+  }
   const res = await fetch(`${baseUrl}/tasks`, {
     method: 'POST',
     headers: {

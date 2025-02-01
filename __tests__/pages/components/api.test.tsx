@@ -42,4 +42,14 @@ describe('addTodo', () => {
     });
     expect(createdTodo).toEqual(newTodo);
   });
+
+  it('should throw an error when todo title is blank', async () => {
+    const newTodo: ITask = {
+      id: '1',
+      title: '',
+      userId: 'testUser'
+    };
+    await expect(addTodo(newTodo)).rejects.toThrow('Todo title cannot be blank');
+  });
 });
+
