@@ -14,14 +14,14 @@ This project is created with the purpose of writing tests for a Next.js applicat
 Start by cloning this repository to your local machine:
 
 ```bash
-git clone <repository_url>
-cd <project_directory>
+git clone <git@github.com:slicbutsic/todo-list-with-test.git>
+cd <todo-list-with-test>
 ```
 
 ### 2. Clerk
 
 - **Clerk** for user authentication
-- **Create an account or sign in (https://clerk.com/).
+- **Create an account or sign in (https://clerk.com/)
 - **Create a `.env.local` file** in the root directory and add the following environment variables:
   - `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
   - `CLERK_SECRET_KEY`
