@@ -45,7 +45,10 @@ export default function AddTaskButton() {
               placeholder="Type here"
               className="input input-bordered w-full py-3 px-4 text-gray-800 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-600"
             />
-            <button type='submit' className="btn bg-indigo-600 text-white hover:bg-indigo-700 rounded-xl shadow-lg transform transition duration-300 hover:scale-105">Submit</button>
+            <button
+            type='submit'
+            className="btn bg-indigo-600 text-white hover:bg-indigo-700 rounded-xl shadow-lg transform transition duration-300 hover:scale-105"
+            disabled={!newTaskValue.trim()}>Submit</button>
           </div>
         </form>
       </Modal>

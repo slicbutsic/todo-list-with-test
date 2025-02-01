@@ -1,6 +1,7 @@
-import { addTodo, getAllTodos } from '@/api';
+import { addTodo, getAllTodos, editTodo } from '@/api';
 import { ITask } from '@/types/tasks';
 
+// Checking getAllTodos function
 describe('getAllTodos', () => {
   beforeEach(() => {
     global.fetch = jest.fn(() =>
@@ -17,6 +18,7 @@ describe('getAllTodos', () => {
   });
 });
 
+// Checking AddTodo function
 describe('addTodo', () => {
   beforeEach(() => {
     global.fetch = jest.fn(() =>
@@ -53,3 +55,31 @@ describe('addTodo', () => {
   });
 });
 
+// Checking EditTodo function
+describe('editTodo', () => {
+  it('should edit a todo', async () => {
+    const todo: ITask = {
+      id: '1',
+      title: 'Test Todo',
+      userId: 'testUser'
+    };
+    const updatedTodo = await editTodo(todo);
+    expect(fetch).toHaveBeenCalledWith('http://localhost:3001/tasks/1', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(todo)
+    });
+    expect(updatedTodo).toEqual(todo);
+  });
+
+  it('should throw an error when todo title is blank', async () => {
+    const blankTodo: ITask = {
+      id: '1',
+      title: '',
+      userId: 'testUser'
+    };
+    await expect(editTodo(blankTodo)).rejects.toThrow('Todo title cannot be blank');
+  });
+});

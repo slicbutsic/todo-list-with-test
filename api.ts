@@ -24,6 +24,9 @@ export const addTodo = async (todo: ITask): Promise<ITask> => {
 }
 
 export const editTodo = async (todo: ITask): Promise<ITask> => {
+  if (!todo.title.trim()) {
+    throw new Error('Todo title cannot be blank');
+  }
   const res = await fetch(`${baseUrl}/tasks/${todo.id}`, {
     method: 'PUT',
     headers: {

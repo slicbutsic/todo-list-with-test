@@ -39,7 +39,10 @@ const EditTaskButton: React.FC<TaskProps> = ({ task }) => {
             onChange={e => setTaskEdit(e.target.value)}
             type="text"
             className="input input-bordered w-full" />
-            <button type='submit' className='btn'>Submit</button>
+            <button
+            type='submit'
+            className="btn bg-indigo-600 text-white hover:bg-indigo-700 rounded-xl shadow-lg transform transition duration-300 hover:scale-105"
+            disabled={!taskEdit.trim()}>Submit</button>
           </div>
         </form>
       </Modal>
