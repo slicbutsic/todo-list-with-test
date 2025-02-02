@@ -1,15 +1,13 @@
-import { getAllTodos } from '@/api';
-import TodoList from '../../components/TodoList';
+import { Suspense } from 'react';
+import TodoList from '@/components/TodoList';
+import Loading from './loading';
 
-
-export default async function Dashboard() {
-  const tasks = await getAllTodos();
-  console.log(tasks);
-
+export default function Dashboard() {
   return (
     <div>
-      <TodoList tasks={tasks} />
+      <Suspense fallback={<Loading />}>
+        <TodoList />
+      </Suspense>
     </div>
-
-  )
+  );
 }
